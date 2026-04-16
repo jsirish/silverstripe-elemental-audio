@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ishannz\Elements\Audio\Test\Elements;
 
 use Ishannz\Elements\Audio\Elements\ElementAudio;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextField;
 
 class ElementSlideshowTest extends SapphireTest
 {

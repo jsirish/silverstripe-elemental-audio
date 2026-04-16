@@ -2,6 +2,7 @@
 
 namespace Ishannz\Elements\Audio\Elements;
 
+use SilverStripe\ORM\ValidationResult;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
@@ -119,17 +120,17 @@ class ElementAudio extends BaseElement
                 [
                     TextField::create(
                         'Title',
-                        _t(__CLASS__ . '.Title', 'Audio block name')
+                        _t(self::class . '.Title', 'Audio block name')
                     ),
                     TextareaField::create(
                         'AudioSummary',
-                        _t(__CLASS__ . '.AudioSummary', 'Audio summary')
+                        _t(self::class . '.AudioSummary', 'Audio summary')
                     )
-                        ->setDescription(_t(__CLASS__ . '.AudioSummaryDescription', 'Short summary introducing the audio.
+                        ->setDescription(_t(self::class . '.AudioSummaryDescription', 'Short summary introducing the audio.
                         <strong>Up to 200 characters.</strong>'))
                         ->setMaxLength(Config::inst()->get(ElementAudio::class, 'audio_summary_max_length')),
                     OptionsetField::create(
-                        _t(__CLASS__ . '.AudioType', 'AudioType'),
+                        _t(self::class . '.AudioType', 'AudioType'),
                         'Audio type',
                         $this->dbObject('AudioType')->enumValues()
                     ),
@@ -140,27 +141,27 @@ class ElementAudio extends BaseElement
                      */
                     $uploadField = UploadField::create(
                         'Audio',
-                        _t(__CLASS__ . '.Audio', 'Audio file')
+                        _t(self::class . '.Audio', 'Audio file')
                     )
                         ->setAllowedFileCategories('audio')
-                        ->setDescription(_t(__CLASS__ . '.AudioDescription', 'Select an audio file from the Files section.
+                        ->setDescription(_t(self::class . '.AudioDescription', 'Select an audio file from the Files section.
                                 Allow formats: aif, aifc, aiff, apl, au, avr, cda, m4a,
                                 mid, midi, mp3, ogg, ra, ram, rm, snd, wav, wma.')),
 
                     $embedCode = TextareaField::create(
                         'EmbedCode',
-                        _t(__CLASS__ . '.EmbedCode', 'Audio embed code')
+                        _t(self::class . '.EmbedCode', 'Audio embed code')
                     ),
 
                     TextField::create(
                         'TranscriptTitle',
-                        _t(__CLASS__ . '.TranscriptTitle',
+                        _t(self::class . '.TranscriptTitle',
                             'Audio transcript heading')
                     ),
 
                     HTMLEditorField::create(
                         'Transcript',
-                        _t(__CLASS__ . '.Transcript', 'Transcript content')
+                        _t(self::class . '.Transcript', 'Transcript content')
                     ),
                 ]);
 
@@ -174,7 +175,7 @@ class ElementAudio extends BaseElement
     /**
      * Check uploading valid audio file.
      *
-     * @return \SilverStripe\ORM\ValidationResult
+     * @return ValidationResult
      */
     public function validate()
     {
@@ -204,6 +205,6 @@ class ElementAudio extends BaseElement
      */
     public function getType()
     {
-        return _t(__CLASS__ . '.BlockType', 'Audio');
+        return _t(self::class . '.BlockType', 'Audio');
     }
 }
